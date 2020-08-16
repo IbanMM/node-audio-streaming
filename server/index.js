@@ -19,18 +19,29 @@ const fs = require('fs');
 const port = process.env.PORT || 3000;
 const stream = ss.createStream();
 
-server.listen(port, () => {
+// --------------------------------------------------------
+// Send to the control all GET the requests
+// --------------------------------------------------------
+app.use( express.static( path.join(__dirname, '../control/dist/') ) );
 
-    console.log('Server listening at port %d', port);
+app.get('*', (req, res) => {
+
+    res.sendFile( path.resolve(__dirname, '../control/dist/', './index.html') )
 
 });
-
-// Routing
-app.use(express.static( path.join(__dirname, 'public')));
 
 io.on('connection', (socket) => {
 
     ss(socket).emit('audio', stream, {name: 'thegrey'});
     fs.createReadStream( __dirname + '/music/thegrey.mp3').pipe(stream);
+
+});
+
+// --------------------------------------------------------
+// Server Up & Running
+// --------------------------------------------------------
+server.listen(port, () => {
+
+    console.log('Server listening at port %d', port);
 
 });
