@@ -16,8 +16,11 @@ const path = require('path');
 const io = require('socket.io')(server);
 const ss = require('socket.io-stream');
 const fs = require('fs');
-const port = process.env.PORT || 3000;
+const cors = require('cors')
+const port = process.env.PORT || 3333;
 const stream = ss.createStream();
+
+app.use(cors())
 
 // --------------------------------------------------------
 // Send to the control all GET the requests
@@ -32,8 +35,19 @@ app.get('*', (req, res) => {
 
 io.on('connection', (socket) => {
 
+    /*
     ss(socket).emit('audio', stream, {name: 'thegrey'});
-    fs.createReadStream( __dirname + '/music/thegrey.mp3').pipe(stream);
+    fs.createReadStream( __dirname + '/music/whitenoise.mp3').pipe(stream);
+    */
+
+    console.log( 'connect' )
+
+    socket.on('bumbum', (message) => {
+
+        // To all users except sender
+        console.log( message )
+
+    })
 
 });
 
