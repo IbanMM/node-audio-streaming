@@ -2,9 +2,23 @@
 
     <div class="h-screen pb-24 relative">
 
-        <Nuxt />
+        <main class="flex">
 
-        <Player/>
+            <Sidebar />
+
+            <div class="w-full bg-black">
+
+                <Nuxt />
+
+            </div>
+
+        </main>
+
+        <footer>
+
+            <Player />
+
+        </footer>
 
     </div>
 
@@ -13,12 +27,14 @@
 <script>
 
     import Player from '@/components/Player'
+    import Sidebar from '@/components/Sidebar'
 
     export default {
 
         components: {
 
-            Player
+            Player,
+            Sidebar
 
         }
         

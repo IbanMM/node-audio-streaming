@@ -68,6 +68,19 @@ io.on('connection', (socket) => {
 
     })
 
+    // --------------------------------------------------------
+    // Emit the client list to the new connected client
+    // --------------------------------------------------------
+    socket.on('disconnect', () => {
+
+        cl.setClientOffline(socket_id)
+
+        io.emit('getUserOffline', {
+            socket: socket_id
+        })
+
+    })
+
 });
 
 // --------------------------------------------------------

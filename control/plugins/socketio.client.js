@@ -18,10 +18,24 @@ export default ( context, inject ) => {
 
     const socket = io.connect( url, { secure: true, query: `client=control` } )
 
+    /**
+     * Client list to the store
+     * 
+     */
     socket.on('getUsersOnline', (data) => {
 
         context.store.commit('clients/SET_SOCKET', socket.id)
         context.store.commit('clients/SET_CLIENTS', data.clients)
+        
+    })
+
+    /**
+     * Remove client from the store
+     * 
+     */
+    socket.on('getUserOffline', (data) => {
+
+        context.store.dispatch('clients/setClientOffline', data.socket)
         
     })
 
