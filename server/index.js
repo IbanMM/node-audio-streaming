@@ -69,7 +69,7 @@ io.on('connection', (socket) => {
     })
 
     // --------------------------------------------------------
-    // Emit the client list to the new connected client
+    // Emit the client who just go offline
     // --------------------------------------------------------
     socket.on('disconnect', () => {
 
