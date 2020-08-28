@@ -14,15 +14,7 @@
 
         </div>
 
-        <div>
-
-            <select name="" id="">
-
-                <option v-for="(client,index) in getClients" :key="index" :value="client.socket">{{ client.name }}</option>
-
-            </select>
-
-        </div>
+        <SelectRoom />
           
     </div>
 
@@ -30,20 +22,16 @@
 
 <script>
 
-    import { mapGetters } from 'vuex'
+    import SelectRoom from '@/components/SelectRoom'
 
     export default {
-        
-        computed: {
 
-            ...mapGetters('clients', ['getClients'])
+        components: {
+
+            SelectRoom
 
         }
 
     }
 
 </script>
-
-<style lang="postcss" scoped>
-
-</style>
