@@ -9,7 +9,7 @@
         >icon</span>
 
         <div
-            class="absolute bg-white right-0 bottom-0 mb-8 rounded"
+            class="absolute bg-white right-0 bottom-0 mb-8 rounded shadow-xl"
             :class="visible ? 'block':'hidden'"
             @mouseenter="showSelect()"
             @mouseleave="timeoutSelect()"

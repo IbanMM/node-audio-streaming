@@ -1,12 +1,24 @@
 <template>
-  <div class="container mx-auto">
-    <p>bum bum</p>
-  </div>
+
+    <div class="container mx-auto">
+
+        <AlbumListThumbnail />
+
+    </div>
+
 </template>
 
 <script>
 
+    import AlbumListThumbnail from '@/components/AlbumListThumbnail'
+
     export default {
+
+        components: {
+
+            AlbumListThumbnail
+
+        },
 
         mounted() {
 
